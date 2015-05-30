@@ -1,0 +1,22 @@
+<h4>Editing {{bookmark.title}}</h4>
+
+<!--<form class="edit-form" ng-show="isEditing" role="form" ng-submit="updateBookmark()" novalidate>-->
+    <div class="form-group">
+        <label>Bookmark Title</label>
+        <input type="text"
+               class="form-control"
+               ng-model="editedTitle"
+               placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label>Bookmark URL</label>
+        <input type="text"
+               class="form-control"
+               ng-model="editedUrl"
+               placeholder="Enter URL">
+    </div>
+    <button type="button" class="btn btn-info btn-lg"
+            ng-click="saveBookmark()">Save</button>
+    <button type="button" class="btn btn-default btn-lg pull-right"
+            ng-click="cancelEdit()">Cancel</button>
+<!--</form>-->

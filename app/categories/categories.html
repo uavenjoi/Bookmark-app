@@ -1,0 +1,7 @@
+<a href="#/"><img class="logo" src="app/img/cat.jpg"></a>
+<ul class="nav nav-sidebar">
+    <li ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
+        <a ui-sref="categories.bookmarks({category: category.name})">
+            {{category.name}}
+        </a></li>
+</ul>
