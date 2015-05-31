@@ -15,6 +15,14 @@
                ng-model="editedUrl"
                placeholder="Enter URL">
     </div>
+    <div class="form-group">
+        <label for="newBookmarkTags">Tags</label>
+        <input  type="text"
+                class="form-control"
+                id="newBookmarkTags"
+                ng-model="createTags"
+                placeholder="Enter comma separated tags">
+    </div>
     <button type="button" class="btn btn-info btn-lg"
             ng-click="saveBookmark()">Save</button>
     <button type="button" class="btn btn-default btn-lg pull-right"

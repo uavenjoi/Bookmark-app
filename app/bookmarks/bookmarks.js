@@ -2,7 +2,8 @@
 angular.module('bookmarks',[
                 'models.bookmarks',
                 'models.categories',
-                'bookmark-edit'
+                'bookmark-edit',
+                'bookmark-create'
 ])
     .directive("bookmarks", ['$state', function($state){
         return{
@@ -12,6 +13,7 @@ angular.module('bookmarks',[
             controller: 'BookmarksCtrl',
             link:function(scope,element,attribute) {
                 scope.isEdit=false;
+                scope.isCreate=false;
                 scope.id=0;
                 scope.editBookmark = function (bookmark) {
                     console.log(bookmark);
@@ -21,7 +23,11 @@ angular.module('bookmarks',[
                     scope.editedUrl=bookmark.url;
                     console.log(scope.title);
                 }
-
+                scope.createBookmark= function () {
+                    scope.isCreate=true;
+                    scope.createTitle="";
+                    scope.createUrl="";
+                }
             }
         }
     }])
@@ -41,7 +47,8 @@ angular.module('bookmarks',[
         });
 
     $scope.getCurrentCategory = categories.getCurrentCategory;
-    $scope.getCurrentCategoryName = categories.getCurrentCategoryName;
+
+    $scope.getCurrentTags = categories.getCurrentTags;
     $scope.isSelectedBookmark = function (bookmarkId) {
         return $stateParams.bookmarkId == bookmarkId;
     };

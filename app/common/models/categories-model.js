@@ -4,7 +4,7 @@ angular.module('models.categories', [
 ])
     .service('categories', function CategoriesService($http, $q) {
         var URLS = {
-                FETCH: 'app/data/categories.json'
+                FETCH: 'app/data/tags.json'
             },
             categories,
             currentCategory,

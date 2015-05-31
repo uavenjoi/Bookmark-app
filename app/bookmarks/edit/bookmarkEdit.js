@@ -17,11 +17,6 @@ angular.module('bookmark-edit',[
                     scope.bookmark.url=scope.editedUrl;
                     scope.isEdit=false;
                 }
-               scope.updateBookmark= function updateBookmark() {
-                    $scope.bookmark = angular.copy($scope.editedBookmark);
-                    bookmarks.updateBookmark($scope.editedBookmark);
-                    returnToBookmarks();
-                }
 
             }
         }
