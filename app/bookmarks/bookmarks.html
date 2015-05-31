@@ -1,8 +1,8 @@
 <h2>Bookmark App</h2>
 <div  class="form-group">
-    <span>Filtered by tag: {{currentTag}} </span> |
+    <span>Filtered by tag: <b>{{currentTag}}</b> </span> |
     <a href="" ng-click="clearFilter()">Clear filter</a>
-
+    <button type="button" ng-click="showLastBookmark()">Last bookmark</button>
 </div>
 <div  bookmark="bookmark"
         ng-repeat="bookmark in bookmarks | filter:{tags:currentTag}">

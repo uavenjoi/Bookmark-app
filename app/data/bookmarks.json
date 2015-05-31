@@ -7,5 +7,5 @@
     {"id":5, "title": "Robb Wolf", "url": "http://robbwolf.com/", "tags": "Exercise" },
     {"id":6, "title": "Senor Gif", "url": "http://memebase.cheezburger.com/senorgif", "tags": "Humor" },
     {"id":7, "title": "Wimp", "url": "http://wimp.com", "tags": "Humor" },
-    {"id":8, "title": "Dump", "url": "http://dump.com", "tags": "Humor, Design" }
+    {"id":8, "title": "Dump", "url": "http://dump.com", "tags": "Humor,Design" }
 ]

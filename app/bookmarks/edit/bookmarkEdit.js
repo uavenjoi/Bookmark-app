@@ -15,10 +15,20 @@ angular.module('bookmark-edit',[
                 scope.saveBookmark=function(){
                     scope.bookmark.title=scope.editedTitle;
                     scope.bookmark.url=scope.editedUrl;
-                    $scope.bookmark.tags = scope.editedTags;
-                    scope.isEdit=false;
-                }
+                    if(scope.bookmark.tags != scope.editedTags) {
+                        var newTags = "";
+                        scope.editedTags.split(',').forEach(function (newTag) {
+                            newTag=newTag.trim();
+                            if (scope.bookmark.tags.split(',').indexOf(newTag.trim()) < 0)
+                                newTags += newTags.length>0 ? ","+ newTag: newTag;
+                        })
+                        scope.bookmark.tags = scope.editedTags;
+                        scope.addTag(newTags);
+                    }
 
+                    scope.isEdit=false;
+
+                }
             }
         }
     }])

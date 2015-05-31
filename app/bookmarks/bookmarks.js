@@ -15,6 +15,7 @@ angular.module('bookmarks',[
                 scope.isEdit=false;
                 scope.isCreate=false;
                 scope.currentTag="";
+
                 scope.id=0;
                 scope.editBookmark = function (bookmark) {
                     console.log(bookmark);
@@ -23,6 +24,7 @@ angular.module('bookmarks',[
                     scope.editedTitle=bookmark.title;
                     scope.editedUrl=bookmark.url;
                     scope.editedTags=bookmark.tags;
+                    scope.lastBookmark=bookmark;
                     console.log(scope.title);
                 }
                 scope.createBookmark= function () {
@@ -53,6 +55,10 @@ angular.module('bookmarks',[
                 scope.clearFilter=function(){
                     scope.currentTag="";
                 }
+                scope.showLastBookmark=function(){
+                    scope.editBookmark(scope.lastBookmark);
+                }
+
             }
         }
     }])

@@ -2,7 +2,7 @@
 <ul class="nav nav-sidebar">
     <li ng-repeat="category in categories"
         ng-class="{'active':isCurrentCategory(category)}">
-        <a ng-click="setCurrentTag(category)">
+        <a href="" ng-click="setCurrentTag(category)">
             {{category.name}} ({{category.count}})
         </a>
     </li>
