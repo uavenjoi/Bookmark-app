@@ -2,8 +2,8 @@
 <ul class="nav nav-sidebar">
     <li ng-repeat="category in categories"
         ng-class="{'active':isCurrentCategory(category)}">
-        <!--<a ui-sref="categories.bookmarks({category: category.name})">-->
         <a ng-click="setCurrentTag(category)">
             {{category.name}} ({{category.count}})
-        </a></li>
+        </a>
+    </li>
 </ul>

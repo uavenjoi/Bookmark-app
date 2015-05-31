@@ -8,7 +8,7 @@ angular.module('categoriesModule',['models.categories'])
             controller:'CategoriesCtrl'
         }
     })
-    .controller('CategoriesCtrl', function CategoriesCtrl($scope, categories) {
+    .controller('CategoriesCtrl', function CategoriesCtrl($scope, categories, dataService) {
         $scope.getCurrentCategoryName = categories.getCurrentCategoryName;
         //$scope.getCurrentCategoryName="Humor";
         categories.getCategories()
@@ -21,31 +21,12 @@ angular.module('categoriesModule',['models.categories'])
         }
 
         $scope.setCurrentTag=function(category){
+            dataService.currentTag=category.name;
+            $scope.currentTag=category.name;
             categories.setCurrentCategory(category);
         }
     })
-    //.controller('BookmarksCtrl', function BookmarksCtrl($scope, $stateParams, bookmarks, categories) {
-    //    categories.setCurrentCategory();
-    //
-    //    if ($stateParams.category) {
-    //        categories.getCategoryByName($stateParams.category).then(function (category) {
-    //            categories.setCurrentCategory(category);
-    //        })
-    //    }
-    //
-    //    bookmarks.getBookmarks()
-    //        .then(function (result) {
-    //            $scope.bookmarks = result;
-    //        });
-    //
-    //    $scope.getCurrentCategory = categories.getCurrentCategory;
-    //    $scope.getCurrentCategoryName = categories.getCurrentCategoryName;
-    //    $scope.isSelectedBookmark = function (bookmarkId) {
-    //        return $stateParams.bookmarkId == bookmarkId;
-    //    };
-    //
-    //    $scope.deleteBookmark = bookmarks.deleteBookmark;
-    //})
+
 ;
 
 

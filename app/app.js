@@ -20,4 +20,8 @@ angular.module('BookmarkApp', [
         }).
         run(function () {
             console.log("1");
-        });
+        })
+    .factory('dataService',[function(){
+        return{currentTag:""}
+    }])
+;

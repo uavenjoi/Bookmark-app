@@ -15,6 +15,7 @@ angular.module('bookmark-edit',[
                 scope.saveBookmark=function(){
                     scope.bookmark.title=scope.editedTitle;
                     scope.bookmark.url=scope.editedUrl;
+                    $scope.bookmark.tags = scope.editedTags;
                     scope.isEdit=false;
                 }
 
