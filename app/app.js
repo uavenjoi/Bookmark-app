@@ -4,24 +4,29 @@ angular.module('BookmarkApp', [
     'categoriesModule',
     'bookmarks',
     'bookmark-edit',
-    'bookmark-create'
+    'bookmark-create',
+    'mainModule'
     ]).config(function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('index', {
-                url: '',
-                abstract: true
-            })
-            //.state('edit',{
-            //    url:'edit/:id',
-            //    template:'<bookmark-edit/>'
-            //}
-        //);
-        $urlRouterProvider.otherwise('/');
-        }).
-        run(function () {
-            console.log("1");
+    $stateProvider.
+        state('book', {
+            url:'',
+            abstract:true
+
+    })
+    //.state('edit', {
+    //    url: '/edit',
+    //    template: '<bookmarkedit/>'
+    //})
+    //.state('create', {
+    //    url: '/create',
+    //    template: '<bookmarkcreate/>'
+    //});
+
+    $urlRouterProvider.otherwise('/');
+})
+    .run(function () {
+         console.log("1");
         })
     .factory('dataService',[function(){
         return{currentTag:""}
-    }])
-;
+    }]);

@@ -1,5 +1,6 @@
 'use strict';
 angular.module('categoriesModule',['models.categories'])
+
     .directive("zippy", function(){
         return{
              restrict:"E",
@@ -10,7 +11,6 @@ angular.module('categoriesModule',['models.categories'])
     })
     .controller('CategoriesCtrl', function CategoriesCtrl($scope, categories, dataService) {
         $scope.getCurrentCategoryName = categories.getCurrentCategoryName;
-        //$scope.getCurrentCategoryName="Humor";
         categories.getCategories()
             .then(function (result) {
                 $scope.categories = result;

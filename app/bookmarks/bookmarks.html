@@ -12,8 +12,9 @@
    </button>
     <button type="button"
             class="btn btn-link"
-            ng-click="editBookmark(bookmark)">
-            <!--ui-sref="categories.bookmarks.edit({category:bookmark.category, bookmarkId:bookmark.id})">-->
+            ng-click="editBookmark(bookmark)"
+            ui-sref="edit"
+            href="edit">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
     <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
@@ -22,14 +23,12 @@
 <bookmarkedit ng-show="isEdit">1</bookmarkedit>
 <bookmarkcreate ng-show="isCreate && !isEdit">1</bookmarkcreate>
 <hr/>
-
-<ui-view>
-        <button type="button"
-                class="btn btn-link"
-                ng-click="createBookmark()"
-                ng-show="!isCreate && !isEdit">
-                  <span class="glyphicon glyphicon-plus"></span>
-            Create Bookmark
-        </button>
-</ui-view>
+<button type="button"
+        class="btn btn-link"
+        ng-click="createBookmark()"
+        ng-show="!isCreate && !isEdit"
+        ui-sref="create">
+          <span class="glyphicon glyphicon-plus"></span>
+    Create Bookmark
+</button>
 

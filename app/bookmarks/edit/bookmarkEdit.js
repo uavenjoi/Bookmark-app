@@ -1,16 +1,22 @@
 'use strict';
 angular.module('bookmark-edit',[
     'models.bookmarks',
+    'models.bookmarks',
     'models.categories'
 ])
-    .directive("bookmarkedit", ['$state', function($state){
+     .directive("bookmarkedit", ['$state', function($state ){
         return{
             restrict:"E",
             transclude: true,
             templateUrl: 'app/bookmarks/edit/bookmarkEdit.html',
+            controller: 'BookmarksCtrl1',
             link:function(scope, element, attribute){
+                //console.log(bookmarks);
+               console.log(scope.tmp());
+
                 scope.cancelEdit=function(){
                     scope.isEdit=false;
+                  //  $state.go('index.main');
                 }
                 scope.saveBookmark=function(){
                     scope.bookmark.title=scope.editedTitle;
@@ -25,12 +31,20 @@ angular.module('bookmark-edit',[
                         scope.bookmark.tags = scope.editedTags;
                         scope.addTag(newTags);
                     }
-
+                    //$state.go('index.main');
                     scope.isEdit=false;
 
                 }
             }
         }
     }])
+    .controller('BookmarksCtrl1', function BookmarksCtrl($scope, $stateParams, bookmarks) {
+
+       $scope.tmp= function(){
+                     return $stateParams;
+       }
+    })
+                //console.log($scope.bookmarks);
+
 
 ;

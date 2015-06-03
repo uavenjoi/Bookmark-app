@@ -5,6 +5,18 @@ angular.module('bookmarks',[
                 'bookmark-edit',
                 'bookmark-create'
 ])
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+        .state('edit', {
+            url: '/edit/:id',
+            template: '<bookmarkedit/>'
+        })
+        .state('create', {
+            url: '/create',
+            template: '<bookmarkcreate/>'
+        })
+    })
+
     .directive("bookmarks", ['$state',  function($state){
         return{
             restrict:"E",
@@ -15,7 +27,7 @@ angular.module('bookmarks',[
                 scope.isEdit=false;
                 scope.isCreate=false;
                 scope.currentTag="";
-
+                //$state.go('index.main');
                 scope.id=0;
                 scope.editBookmark = function (bookmark) {
                     console.log(bookmark);
@@ -26,12 +38,14 @@ angular.module('bookmarks',[
                     scope.editedTags=bookmark.tags;
                     scope.lastBookmark=bookmark;
                     console.log(scope.title);
+                    $state.go('edit',{id:bookmark.id});
                 }
                 scope.createBookmark= function () {
                     scope.isCreate=true;
                     scope.createTitle="";
                     scope.createUrl="";
                     scope.createTags="";
+                    $state.go('create')
                 }
                 scope.deleteBookmark= function(bookmark) {
                         _.remove(scope.bookmarks, function (b) {
@@ -54,6 +68,7 @@ angular.module('bookmarks',[
                 }
                 scope.clearFilter=function(){
                     scope.currentTag="";
+                    $state.go('index');
                 }
                 scope.showLastBookmark=function(){
                     scope.editBookmark(scope.lastBookmark);
@@ -78,18 +93,11 @@ angular.module('bookmarks',[
             //console.log($scope.bookmarks);
         });
 
-    //$scope.getCurrentCategory = categories.getCurrentCategory;
 
     $scope.getCurrentTags = categories.getCurrentTags;
     $scope.isSelectedBookmark = function (bookmarkId) {
         return $stateParams.bookmarkId == bookmarkId;
     };
 
-    //$scope.deleteBookmark = bookmarks.deleteBookmark;
-
-    /*$scope.editBookmark=function(id){
-            console.log(id);
-
-    }*/
 })
 ;

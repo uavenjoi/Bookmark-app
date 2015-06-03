@@ -11,6 +11,7 @@ angular.module('bookmark-create',[
             link: function (scope, element, attribute) {
                 scope.cancelCreate = function () {
                     scope.isCreate = false;
+                   // $state.go('index.main');
                 }
                 scope.saveCreate = function () {
                     var bookmark = {};
@@ -21,6 +22,7 @@ angular.module('bookmark-create',[
                     scope.bookmarks.push(bookmark);
                     scope.addTag(scope.createTags);
                     scope.isCreate = false;
+                   // $state.go('index.main');
                 }
                 scope.addTag = function (tags) {
                     var tagsArray = [];
