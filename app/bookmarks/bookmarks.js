@@ -6,15 +6,11 @@ angular.module('bookmarks',[
                 'bookmark-create'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
-        $stateProvider
-        .state('edit', {
-            url: '/edit/:id',
-            template: '<bookmarkedit/>'
-        })
-        .state('create', {
-            url: '/create',
-            template: '<bookmarkcreate/>'
-        })
+        $stateProvider.
+            state('index.bookmarks', {
+                url:'/index.bookmarks',
+                temlplate:'<bookmarks/>'
+            })
     })
 
     .directive("bookmarks", ['$state',  function($state){
@@ -45,7 +41,7 @@ angular.module('bookmarks',[
                     scope.createTitle="";
                     scope.createUrl="";
                     scope.createTags="";
-                    $state.go('create')
+                   // $state.go('create')
                 }
                 scope.deleteBookmark= function(bookmark) {
                         _.remove(scope.bookmarks, function (b) {

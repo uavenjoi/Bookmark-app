@@ -27,8 +27,14 @@
         class="btn btn-link"
         ng-click="createBookmark()"
         ng-show="!isCreate && !isEdit"
-        ui-sref="create">
-          <span class="glyphicon glyphicon-plus"></span>
+        ui-sref="index.bookmarks.create">
+    <span class="glyphicon glyphicon-plus"></span>
     Create Bookmark
 </button>
+<ui-view>
+    <div ng-if="!isCreate">
+
+    </div>
+
+</ui-view>
 

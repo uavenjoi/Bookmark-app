@@ -8,9 +8,18 @@ angular.module('BookmarkApp', [
     'mainModule'
     ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.
-        state('book', {
-            url:'',
-            abstract:true
+        state('index', {
+            url:'/',
+            views:{
+                'categories':{
+                    //controller:'controller:',
+                    template:'<zippy/>'
+                },
+                'bookmarks':{
+                    template:'<bookmarks/>'
+                }
+            }
+           // abstract:true
 
     })
     //.state('edit', {

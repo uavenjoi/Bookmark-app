@@ -3,6 +3,18 @@ angular.module('bookmark-create',[
     'models.bookmarks',
     'models.categories'
 ])
+    .config(function($stateProvider) {
+        $stateProvider
+            .state(
+            'index.bookmarks.create', {
+                url: '/bookmarks/create',
+                views: {
+                    'bookmarks': {
+                        template: '<bookmarkcreate/>'
+                    }
+                }
+            })
+    })
 .directive('bookmarkcreate',['$state', function($state){
         return {
             restrict: 'E',
