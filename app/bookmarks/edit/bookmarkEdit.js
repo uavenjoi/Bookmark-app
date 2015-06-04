@@ -1,9 +1,20 @@
 'use strict';
 angular.module('bookmark-edit',[
     'models.bookmarks',
-    'models.bookmarks',
     'models.categories'
 ])
+    .config(function($stateProvider) {
+        $stateProvider
+            .state(
+            'index.bookmarks.edit', {
+                url: '/bookmarks/edit',
+                views: {
+                    'bookmarks': {
+                        template: '<bookmarkedit/>'
+                    }
+                }
+            })
+    })
      .directive("bookmarkedit", ['$state', function($state ){
         return{
             restrict:"E",

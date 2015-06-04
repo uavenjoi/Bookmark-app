@@ -1,11 +1,12 @@
 <h2>Bookmark App</h2>
 <div  class="form-group">
-    <span>Filtered by tag: <b>{{currentTag}}</b> </span> |
+    <span>Filtered by tag: <b>{{getCurrentCategoryName()}}</b> </span> |
     <a href="" ng-click="clearFilter()">Clear filter</a>
+
     <button type="button" ng-click="showLastBookmark()">Last bookmark</button>
 </div>
 <div  bookmark="bookmark"
-        ng-repeat="bookmark in bookmarks | filter:{tags:currentTag}">
+        ng-repeat="bookmark in bookmarks | filter:{tags:getCurrentCategoryName()}">
 
    <button type="button" class="close"
            ng-click="deleteBookmark(bookmark)">&times;
@@ -13,8 +14,7 @@
     <button type="button"
             class="btn btn-link"
             ng-click="editBookmark(bookmark)"
-            ui-sref="edit"
-            href="edit">
+            ui-sref="index.bookmarks.edit">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
     <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
@@ -31,8 +31,9 @@
     <span class="glyphicon glyphicon-plus"></span>
     Create Bookmark
 </button>
+
 <ui-view>
-    <div ng-if="!isCreate">
+    <div ng-show="isCreate">
 
     </div>
 

@@ -3,7 +3,8 @@ angular.module('bookmarks',[
                 'models.bookmarks',
                 'models.categories',
                 'bookmark-edit',
-                'bookmark-create'
+                'bookmark-create',
+                'categoriesModule'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider.
@@ -13,7 +14,7 @@ angular.module('bookmarks',[
             })
     })
 
-    .directive("bookmarks", ['$state',  function($state){
+    .directive("bookmarks", ['$state',  function($state,dataService, $rootScope){
         return{
             restrict:"E",
             transclude: true,
@@ -23,8 +24,8 @@ angular.module('bookmarks',[
                 scope.isEdit=false;
                 scope.isCreate=false;
                 scope.currentTag="";
-                //$state.go('index.main');
                 scope.id=0;
+
                 scope.editBookmark = function (bookmark) {
                     console.log(bookmark);
                     scope.isEdit=true;
@@ -33,16 +34,14 @@ angular.module('bookmarks',[
                     scope.editedUrl=bookmark.url;
                     scope.editedTags=bookmark.tags;
                     scope.lastBookmark=bookmark;
-                    console.log(scope.title);
-                    $state.go('edit',{id:bookmark.id});
+                   // $state.go('edit',{id:bookmark.id});
                 }
                 scope.createBookmark= function () {
                     scope.isCreate=true;
                     scope.createTitle="";
                     scope.createUrl="";
                     scope.createTags="";
-                   // $state.go('create')
-                }
+                 }
                 scope.deleteBookmark= function(bookmark) {
                         _.remove(scope.bookmarks, function (b) {
                             return b.id == bookmark.id;
@@ -57,14 +56,18 @@ angular.module('bookmarks',[
                                 category.count--;
                                 console.log(scope.categories.indexOf(category));
                                 if(category.count===0)
-                                    scope.categories.splice(scope.categories.indexOf(category),1);
+                                    sope.categories.splice(scope.categories.indexOf(category),1);
                             }
                         })
                     })
                 }
                 scope.clearFilter=function(){
+                    console.log(scope.categories);
+                    //scope.getCurrentCategoryName="";
+                    //scope.clearCurrentCategoryName
                     scope.currentTag="";
-                    $state.go('index');
+
+
                 }
                 scope.showLastBookmark=function(){
                     scope.editBookmark(scope.lastBookmark);
@@ -73,7 +76,7 @@ angular.module('bookmarks',[
             }
         }
     }])
-.controller('BookmarksCtrl', function BookmarksCtrl($scope, $stateParams, bookmarks, categories) {
+.controller('BookmarksCtrl', function BookmarksCtrl($scope, $rootScope, $stateParams, bookmarks, categories, dataService) {
     categories.setCurrentCategory();
 
     if ($stateParams.category) {
@@ -86,9 +89,13 @@ angular.module('bookmarks',[
     bookmarks.getBookmarks()
         .then(function (result) {
             $scope.bookmarks = result;
-            //console.log($scope.bookmarks);
+            console.log(dataService.tags);
+            console.log( $rootScope.categories);
         });
 
+    $scope.getCurrentCategoryName = categories.getCurrentCategoryName;
+
+    $scope.clearCurrentCategoryName= categories.setCurrentCategory("");
 
     $scope.getCurrentTags = categories.getCurrentTags;
     $scope.isSelectedBookmark = function (bookmarkId) {

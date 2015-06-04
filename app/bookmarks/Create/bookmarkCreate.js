@@ -12,6 +12,7 @@ angular.module('bookmark-create',[
                     'bookmarks': {
                         template: '<bookmarkcreate/>'
                     }
+
                 }
             })
     })
@@ -20,6 +21,7 @@ angular.module('bookmark-create',[
             restrict: 'E',
             transclude: true,
             templateUrl: 'app/bookmarks/create/bookmarkCreate.html',
+            //controller:'CategoriesCreate',
             link: function (scope, element, attribute) {
                 scope.cancelCreate = function () {
                     scope.isCreate = false;
@@ -27,6 +29,10 @@ angular.module('bookmark-create',[
                 }
                 scope.saveCreate = function () {
                     var bookmark = {};
+
+                    console.log(scope.bookmarks);
+                    console.log(scope.categories);
+
                     bookmark.id = scope.bookmarks.length;
                     bookmark.title = scope.createTitle;
                     bookmark.url = scope.createUrl;
@@ -34,7 +40,6 @@ angular.module('bookmark-create',[
                     scope.bookmarks.push(bookmark);
                     scope.addTag(scope.createTags);
                     scope.isCreate = false;
-                   // $state.go('index.main');
                 }
                 scope.addTag = function (tags) {
                     var tagsArray = [];
@@ -42,6 +47,7 @@ angular.module('bookmark-create',[
                         tagsArray = tags.split(',');
                         var isNew = true;
                         tagsArray.forEach(function (tag) {
+                            scope.tmp();
                             scope.categories.forEach(function (category) {
                                 if (category.name === tag.trim()) {
                                     category.count++;
@@ -60,4 +66,13 @@ angular.module('bookmark-create',[
                 }
             }
         }
-    }]);
+    }])
+    //.controller('CategoriesCreate', function CategoriesCtrl($scope, categories, dataService) {
+    //        $scope.tmp=  categories;
+    //    $scope.tmp=function(){
+    //         var cat=  categories.getCategories();
+    //
+    //    }
+    //
+    //})
+;
