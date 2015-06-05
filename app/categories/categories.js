@@ -24,12 +24,9 @@ angular.module('categoriesModule',['models.categories','bookmark-create'])
         }
 
         $rootScope.setCurrentTag=function(category){
-            $scope.currentTag=category.name;
+            $rootScope.currentTag=category.name;
             categories.setCurrentCategory(category);
-            console.log($scope.categories);
-            console.log(category);
-            console.log($rootScope.categories);
-
+            console.log($scope.currentTag);
         }
     })
 

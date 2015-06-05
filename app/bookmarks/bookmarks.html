@@ -1,13 +1,10 @@
 <h2>Bookmark App</h2>
 <div  class="form-group">
-    <span>Filtered by tag: <b>{{getCurrentCategoryName()}}</b> </span> |
+    <span>Filtered by tag: <b>{{currentTag}}</b> </span> |
     <a href="" ng-click="clearFilter()">Clear filter</a>
-
     <button type="button" ng-click="showLastBookmark()">Last bookmark</button>
 </div>
-<div  bookmark="bookmark"
-        ng-repeat="bookmark in bookmarks | filter:{tags:getCurrentCategoryName()}">
-
+<div  bookmark="bookmark"  ng-repeat="bookmark in filteredBookmarks | filter:{tags:currentTag}">
    <button type="button" class="close"
            ng-click="deleteBookmark(bookmark)">&times;
    </button>
@@ -31,11 +28,12 @@
     <span class="glyphicon glyphicon-plus"></span>
     Create Bookmark
 </button>
-
-<ui-view>
-    <div ng-show="isCreate">
-
-    </div>
-
-</ui-view>
-
+<hr/>
+<div ng-controller="BookmarksCtrl">
+    <pagination
+            ng-model="currentPage"
+            total-items="100"
+            max-size="maxSize"
+            boundary-links="true">
+    </pagination>
+</div>

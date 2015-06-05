@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+
 
     <script src="app/app.js"></script>
     <script src="app/main/main.js"></script>
@@ -22,24 +24,13 @@
     <title>BookmarkApp</title>
 </head>
 <body>
-<!--<div class="container-fluid">-->
-    <!--<div class="row">-->
-         <!--<zippy class="col-sm-3 col-md-2 sidebar" >2</zippy>-->
-        <!--<bookmarks class="col-sm-5 col-sm-offset-3 col-md-7 col-md-offset-2 main">1</bookmarks>-->
-       <!-- -->
-      <!--</div>-->
-<!--</div>-->
-
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar" ui-view="categories">2</div>
         <div class="col-sm-5 col-sm-offset-3 col-md-7 col-md-offset-2 main" ui-view="bookmarks">1</div>
-        <div>111</div>
     </div>
 </div>
-<ui-view></ui-view>
-
 
 </body>
 </html>
